@@ -17,6 +17,12 @@ app.use(express.static('public'));
 // MIDDLEWARE
 app.use(express.urlencoded({extended: true}));
 
+// DEPENDENCIES
+const methodOverride = require('method-override');
+
+// MIDDLEWARE
+app.use(methodOverride('_method'))
+
 // ROUTES
 app.get('/', (req, res) => {
   res.send('Welcome to an Awesome App about Breads');
