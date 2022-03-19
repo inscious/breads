@@ -1,25 +1,29 @@
-const React = require('react')
-const Default = require('./layouts/default')
+const React = require('react');
+const Default = require('./layouts/default');
 
-function Index ({breads, title})  {
-
+function Index (props)  {
+  const breads = props.breads;
     return (
-      <Default title={title}>
-        <div className="newButton">
-          <a href="/breads/new"><button>Add a new bread</button></a>
-        </div>
+      <Default title={props.title}>
+
         <h2>Index Page</h2>
+
         {
           breads.map((bread, index)=> {
             return (
               <li key={index}>
-                <a href={`/breads/${index}`}>
+                <a href={`/breads/${bread.id}`}>
                   {bread.name}
                 </a>
               </li>
             )
           })
         }
+
+        <div className="newButton">
+          <a href={`/breads/${breads.id}`}><button>Add a new bread</button></a>
+        </div>
+
       </Default>
     )
     
