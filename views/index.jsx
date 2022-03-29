@@ -1,27 +1,37 @@
 const React = require('react');
 const Default = require('./layouts/default');
 
-function Index (props)  {
-  const breads = props.breads;
+function Index ({bakers, breads, title})  {
+  // const breads = props.breads;
     return (
-      <Default title={props.title}>
+      <Default title={title}>
 
         <h2>Index Page</h2>
-
-        {
-          breads.map((bread, index)=> {
-            return (
-              <li key={index}>
-                <a href={`/breads/${bread.id}`}>
-                  {bread.name}
-                </a>
-              </li>
-            )
-          })
-        }
-
+        <h3>Bakers</h3>
+          <ul>
+              {
+                  bakers.map((baker)=> {
+                      return (
+                          <li key={baker._id}>
+                              <a href={`/bakers/${baker._id}`}>{baker.name}</a>
+                          </li>
+                      )
+                  })
+              }
+          </ul>
+          <h3>Breads</h3>
+            {breads.map((bread)=> {
+                return (
+                  <li key={bread._id}>
+                    <a href={`/breads/${bread._id}`}>
+                      {bread.name}
+                    </a>
+                  </li>
+                )
+              })
+            }
         <div className="newButton">
-          <a href={`/breads/${breads.id}`}><button>Add a new bread</button></a>
+          <a href={'/breads/new'}><button>Add a new bread</button></a>
         </div>
 
       </Default>
@@ -30,3 +40,7 @@ function Index (props)  {
 }
 
 module.exports = Index
+
+
+
+
